@@ -1,24 +1,39 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import './Expenses.css';
 import ExpenseItem from './ExpenseItem';
 import ExpenseFilter from './ExpenseFilter'
 import Card from '../UI/Card';
 
 const Expenses = (props) => {
- const [selectedYear, setSelectedYear] = useState('2020');
-  const filterChangeHandler = (selectedYear) => {
-    setSelectedYear(selectedYear)
-  }
+    const [filteredYear, setFilteredYear] = useState('2020');
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear)
+    };
+    //map metoduna filitre edilmis veri return edilir
+    const filteredExpenses = props.items.filter(expense => {
+        //burada yillar gore filitre edilir ve filtre edilmis butun obje mape gonderilir
+        return expense.date.getFullYear().toString() === filteredYear;
+    })
+
+    let expensesContent =  <p>No Expense found</p>;
+
+    if (filteredExpenses.length > 0) {
+        expensesContent = filteredExpenses.map((items) => (
+            <ExpenseItem
+            key={items.id}
+            title={items.title}
+            amount={items.amount}
+            date={items.date} />
+            ))
+    }
     return (
         <div>
-
-
             <Card className='expenses'>
-                <ExpenseFilter selected={selectedYear} onChangeFilter={filterChangeHandler}/>
-                <ExpenseItem title={props.items[0].title} amount={props.items[0].amount} date={props.items[0].date} />
-                <ExpenseItem title={props.items[1].title} amount={props.items[1].amount} date={props.items[1].date} />
-                <ExpenseItem title={props.items[2].title} amount={props.items[2].amount} date={props.items[2].date} />
-                <ExpenseItem title={props.items[3].title} amount={props.items[3].amount} date={props.items[3].date} />
+                <ExpenseFilter 
+                  selected={filteredYear} 
+                  onChangeFilter={filterChangeHandler}
+                />
+               {expensesContent}
             </Card>
         </div>
     )

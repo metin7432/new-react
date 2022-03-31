@@ -5,7 +5,10 @@ import Card from '../UI/Card';
  const ExpenseFilter = (props) => {
     
     const dropdownChangeHandler = (e) => {
-        props.onChangeFilter(e.target.value);
+      const values = e.target.value
+        props.onChangeFilter(values);
+        
+
     }
   return (
     <div className='expenses-filter'>
