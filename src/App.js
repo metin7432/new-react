@@ -9,8 +9,11 @@ import NewExpense from './components/NewExpense/NewExpense';
 const DUMMY_EXPENSES = [
   { id: 'e1', title: 'Car Insurnce', amount: 265.56, date: new Date(2022, 3, 5) },
   { id: 'e2', title: 'House Insurnce', amount: 234.78, date: new Date(2021, 4, 8) },
-  { id: 'e4', title: ' Electric bills', amount: 345.43, date: new Date(2022, 5, 23) },
-  { id: 'e3', title: 'Water bills', amount: 123.45, date: new Date(2022, 8, 23) }
+  { id: 'e3', title: 'Electric bills', amount: 345.43, date: new Date(2022, 5, 23) },
+  { id: 'e4', title: 'Naturel Gas bills', amount: 345.89, date: new Date(2021, 5, 23) },
+  { id: 'e5', title: 'TurkTelekom bills', amount: 123.45, date: new Date(2020, 9, 21) },
+  { id: 'e6', title: 'Water Bill', amount: 123.45, date: new Date(2021, 10, 11) },
+  { id: 'e7', title: 'Kasko', amount: 123.45, date: new Date(2022, 2, 11) }
 
 ];
 
